@@ -1,0 +1,6 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Include file="preload.lua"/>
+	<Include file="main.lua"/>
+	<Include file="events.lua"/>
+	<Include file="modules\gathering.lua"/>
+</Ui>
