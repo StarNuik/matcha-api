@@ -25,19 +25,9 @@ local bus = new_event_bus()
 mapi.Pub = bus.Fire
 mapi.Sub = bus.Subscribe
 
-local function pub(...)
-	bus.Fire(unpack(arg))
-end
-
-local function sub(key, call)
-	bus.Subscribe(key, call)
-end
-
-wow_events = {
-	WOW_UPDATE = "UPDATE",
-	WOW_CHAT_MSG_SKILL = "CHAT_MSG_SKILL",
-	WOW_ADDON_LOADED = "ADDON_LOADED",
-}
+local pub = mapi.Pub
+local sub = mapi.Sub
+local wow_event = mapi.wow_event
 
 local function handle_event()
 	pub(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
@@ -46,10 +36,10 @@ end
 local function init_frame()
 	local f = CreateFrame("Frame")
 	
-	f:SetScript("OnUpdate", function() pub(wow_events.WOW_UPDATE) end)
+	f:SetScript("OnUpdate", function() pub(wow_event.WOW_UPDATE) end)
 	f:SetScript("OnEvent", function() handle_event() end)
 
-	for _, v in pairs(wow_events) do
+	for _, v in pairs(wow_event) do
 		if v == "UPDATE" then
 			-- continue
 		else
@@ -57,5 +47,4 @@ local function init_frame()
 		end
 	end
 end
-
 init_frame()

@@ -2,5 +2,6 @@
 ## Title: |cff74A12EMatcha|cffffffff Api
 ## Notes: Scripting library / backend
 ## Version: 0.1
+## SavedVariables: mapi_persistent_model
 
 load.xml

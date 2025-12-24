@@ -1,6 +1,20 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<!-- Core -->
 	<Include file="preload.lua"/>
-	<Include file="main.lua"/>
-	<Include file="events.lua"/>
+	<Include file="model.lua"/>
+	<Include file="wow_event.lua"/>
+	<Include file="event_bus.lua"/>
+	
+	<!-- Gathering -->
 	<Include file="modules\gathering.lua"/>
+	
+	<!-- Unit Tracking -->
+	<Include file="services\svc_event.lua"/>
+	<Include file="services\unit_tracking\add.lua"/>
+	<Include file="services\unit_tracking\remove.lua"/>
+	<Include file="services\unit_tracking\filter_totem.lua"/>
+	<Include file="services\unit_tracking\filter_player_totem.lua"/>
+
+	<!-- API Functions -->
+	<Include file="main.lua"/>
 </Ui>

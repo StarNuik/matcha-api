@@ -172,12 +172,13 @@ local function handle(msg)
 	print(string.format("%s upgrade: %s.", skill, skills))
 end
 
-function debug_pub(level)
-	mapi.Pub(wow_events.WOW_CHAT_MSG_SKILL,
-		string.format("Your skill in %s has increased to %d.", "Herbalism", level)
-	)
+local wow_event = mapi.wow_event
+function debug_pub(skill_level)
+	local skill_name = "Herbalism"
+	local fmt = "Your skill in %s has increased to %d."
+	local payload = string.format(fmt, skill_name, skill_level)
+	mapi.Pub(wow_event.WOW_CHAT_MSG_SKILL, payload)
 end
 
+mapi.Sub(wow_event.WOW_CHAT_MSG_SKILL, handle)
 print("Hello, gathering!")
-print(mapi.Sub)
-mapi.Sub(wow_events.WOW_CHAT_MSG_SKILL, handle)
